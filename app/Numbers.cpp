@@ -2,75 +2,109 @@
 // Created by arunk on 02/25/2019.
 //
 
-#include <iostream>
 #include "../include/Numbers.h"
-#include <vector>
-#include <numeric>
 #include <algorithm>
+#include <iostream>
+#include <numeric>
+#include <vector>
 
-void Numbers::prompt() {
+void Numbers::prompt() {   /*@brief  Displaying prompt information*/
     std::cout << "\n=================================\n"
                  "P - Print numbers. \nA - Add a number. \n"
                  "M - Display mean of numbers. \n"
                  "S - Display the smallest number. \n"
                  "L - Display the largest number. \n"
                  "F - Flush the container. \n"
-                 "Q - Quit. \n\nPlease, make a choice: " <<
-              std::endl;
+                 "Q - Quit. \n\nPlease, make a choice: "
+              << std::endl;
 }
 
-void Numbers::action() {
+void Numbers::action() {   /*@brief  Invoke prompt method first*/
     prompt();
+
+    /*@brief  Define selection as input char, initialized as 'B'*/
     char selection = 'B';
+
+    /*@brief  Starting while loop*/
     while (std::cin >> selection) {
+
+        /*@brief  Find 'Q' then quit*/
         if (selection == 'q' || selection == 'Q') {
             std::cout << "Goodbye !";
             break;
         } else {
+
+            /*@brief Starting switch cases*/
             switch (selection) {
-                case 'P' :
-                case 'p' : {
+
+                /*@brief Case P to print vector list*/
+                case 'P':
+                case 'p': {
+
+                    /*@brief If vector list not empty, start print list*/
                     if (!_docket.empty()) {
                         std::cout << "Elements in the vector are : ";
-                        std::copy(_docket.begin(), _docket.end(),
-                                  std::ostream_iterator<int>(std::cout, " "));
-                    } else std::cout << "The vector is empty." << std::endl;
+
+                        /*@brief Start to print vector list */
+                        std::copy(_docket.begin(), _docket.end(), std::ostream_iterator<int>(std::cout, " "));
+                    } else
+
+                        /*@brief If vector is empty, print */
+                        std::cout << "The vector is empty." << std::endl;
                 }
                     break;
-                case 'A' :
-                case 'a' : {
+
+                    /*@brief Case 'A' to add integer to vector list*/
+                case 'A':
+                case 'a': {
                     std::cout << "Enter an integer to add : " << std::endl;
-                    int dummy;
+
+                    /*@brief Create double variable to store input number*/
+                    double dummy;
                     std::cin >> dummy;
-                    _docket.push_back(dummy);
-                    std::cout << dummy << " added to the vector." << std::endl;
+
+                    /*@brief Transfer double into integer and push to vector then print*/
+                    _docket.push_back(int(dummy));
+                    std::cout << int(dummy) << " added to the vector." << std::endl;
                 }
                     break;
-                case 'M' :
-                case 'm' :
+
+                    /*@brief Case 'M' to compute mean of the vector list*/
+                case 'M':
+                case 'm':
                     if (!_docket.empty()) {
                         std::cout << "The mean of ";
-                        std::copy(_docket.begin(), _docket.end(),
-                                  std::ostream_iterator<int>(std::cout, " "));
+                        std::copy(_docket.begin(), _docket.end(), std::ostream_iterator<int>(std::cout, " "));
                         std::cout << " is ";
-                        std::cout << std::accumulate(_docket.begin(), _docket.end(), 0)
-                                     / _docket.size() << std::endl;
-                    } else std::cout << "Empty vector, the mean cannot be computed.";
+
+                        /*@brief Create integer to store the sum of vector list */
+                        int mean_int = std::accumulate(_docket.begin(), _docket.end(), 0);
+
+                        /*@brief First transfer to double then divide to get the accurate number of mean*/
+                        std::cout << static_cast<double> (mean_int) / _docket.size() << std::endl;
+                    } else
+                        std::cout << "Empty vector, the mean cannot be computed.";
                     break;
-                case 's' :
-                case 'S' :
-                    std::cout << "The smallest element is " <<
-                              *std::min_element(begin(_docket), end(_docket));
+
+                    /*@brief Case 'S' to print the smallest element*/
+                case 's':
+                case 'S':
+                    std::cout << "The smallest element is " << *std::min_element(_docket.begin(), _docket.end());
                     break;
-                case 'l' :
-                case 'L' :
-                    std::cout << "The largest element is " <<
-                              *std::max_element(begin(_docket), end(_docket));
+
+                    /*@brief Case 'L' to print the largest element */
+                case 'l':
+                case 'L':
+                    std::cout << "The largest element is " << *std::max_element(_docket.begin(), _docket.end());
                     break;
-                case 'f' :
-                case 'F' :
+
+                    /*@brief Case 'F' to clear all the stored numbers in the vector list */
+                case 'f':
+                case 'F':
                     _docket.clear();
                     break;
+
+                    /*@brief Other cases, try again. */
                 default:
                     std::cout << "Invalid choice. Please try again !" << std::endl;
                     break;

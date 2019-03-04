@@ -12,14 +12,18 @@
 class Numbers {
 public:
     Numbers() = default;
-
+    
+    /*@brief  Define destructor*/
     ~Numbers() = default;
-
+    
+    /*@brief  Define prompt method*/
     void prompt();
-
+    
+    /*@brief  Define action method*/
     void action();
 
 private:
+    /*@brief  Define vector storage space*/
     std::vector<int> _docket;
 };
 
