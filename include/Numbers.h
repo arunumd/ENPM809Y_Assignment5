@@ -16,9 +16,10 @@
 
 class Numbers {
 public:
+    /*@brief  Define default constructor*/
     Numbers() = default;
 
-    /*@brief  Define destructor*/
+    /*@brief  Define default destructor*/
     ~Numbers() = default;
 
     /*@brief  Define prompt method*/
