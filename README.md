@@ -16,6 +16,7 @@ cd ~\ENPM809Y_Assignment5
 mkdir build
 cd build
 cmake .. && make
+./ENPM809Y_Assignment5
 ```
 
 **Option 2**
