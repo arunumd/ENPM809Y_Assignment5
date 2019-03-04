@@ -1,6 +1,10 @@
-//
-// Created by arunk on 02/25/2019.
-//
+/*
+ * @file    Numbers.cpp
+ * @author  Arun Kumar Devarajulu
+ * @date    February 25, 2019
+ * @brief   The file Numbers.cpp contains the implementation details of
+ *          Assignment No 3
+ */
 
 #include "../include/Numbers.h"
 #include <algorithm>
